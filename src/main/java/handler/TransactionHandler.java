@@ -3,18 +3,27 @@ package handler;
 import com.google.gson.Gson;
 import dao.TransactionDao;
 import dto.TransactionDto;
-import dto.TransactionListDto;
 import request.ParsedRequest;
 import response.ResponseBuilder;
 import response.RestApiAppResponse;
 
 import java.util.List;
 
-public class GetTransactionsHandler implements BaseHandler {
+public class TransactionHandler implements BaseHandler {
     private static final Gson gson = new Gson();
 
     @Override
     public ResponseBuilder handleRequest(ParsedRequest request) {
+        String method = request.getMethod();
+        
+        if (method.equals("GET")) {
+            return handleGetTransactions(request);
+        } else {
+            return new ResponseBuilder().setStatus(405).setBody("Method not allowed");
+        }
+    }
+
+    private ResponseBuilder handleGetTransactions(ParsedRequest request) {
         String userId = request.getQueryParam("userId");
         
         if (userId == null || userId.isEmpty()) {
@@ -22,12 +31,11 @@ public class GetTransactionsHandler implements BaseHandler {
         }
 
         List<TransactionDto> transactions = TransactionDao.getInstance().getByUserId(userId);
-        TransactionListDto transactionListDto = new TransactionListDto(transactions);
         
-        RestApiAppResponse<TransactionListDto> response = new RestApiAppResponse<>(
+        RestApiAppResponse<List<TransactionDto>> response = new RestApiAppResponse<>(
             true,
             "Transactions retrieved successfully",
-            transactionListDto
+            transactions
         );
         
         return new ResponseBuilder().setStatus(200).setBody(gson.toJson(response));

@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Debug (Launch) - Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch) - Main Class",
+      "request": "launch",
+      "mainClass": "your.package.MainClassName",
+      "projectName": "homework-1-Zwin-ux-main"
+    }
+  ]
+}

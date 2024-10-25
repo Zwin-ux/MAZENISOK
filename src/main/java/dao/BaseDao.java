@@ -13,7 +13,6 @@ public interface BaseDao<T extends BaseDto> {
 
     List<T> getAll();
 
-    // Additional useful methods
     boolean exists(String uniqueId);
 
     void delete(String uniqueId);

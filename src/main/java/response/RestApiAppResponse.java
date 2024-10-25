@@ -1,18 +1,13 @@
 package response;
 
-import dto.BaseDto;
-
-import java.util.List;
-
-public class RestApiAppResponse<T extends BaseDto> {
-
-    public final boolean status;
-    public final List<T> data;
+public class RestApiAppResponse<T> {
+    public final boolean success;
     public final String message;
+    public final T data;
 
-    public RestApiAppResponse(boolean status, List<T> data, String message) {
-        this.status = status;
-        this.data = data;
+    public RestApiAppResponse(boolean success, String message, T data) {
+        this.success = success;
         this.message = message;
+        this.data = data;
     }
 }

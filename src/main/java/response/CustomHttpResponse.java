@@ -1,6 +1,7 @@
 package response;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CustomHttpResponse {
     public final Map<String, String> headers;
@@ -16,8 +17,11 @@ public class CustomHttpResponse {
         this.body = body;
     }
 
-    // TODO fill this out
+    @Override
     public String toString() {
-        return null;
+        String headerString = headers.entrySet().stream()
+                .map(entry -> entry.getKey() + ": " + entry.getValue())
+                .collect(Collectors.joining("\n"));
+        return version + " " + status + "\n" + headerString + "\n\n" + body;
     }
 }

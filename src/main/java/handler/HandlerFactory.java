@@ -3,20 +3,31 @@ package handler;
 import request.ParsedRequest;
 
 public class HandlerFactory {
-    // routes based on the path. Add your custom handlers here
     public static BaseHandler getHandler(ParsedRequest request) {
         String path = request.getPath();
+        String method = request.getMethod();
         
         if (path.startsWith("/api/transactions")) {
-            return new TransactionHandler();
+            if (method.equals("POST") && path.endsWith("/deposit")) {
+                return new CreateDepositHandler();
+            } else if (method.equals("GET")) {
+                return new GetTransactionsHandler();
+            }
         } else if (path.startsWith("/api/users")) {
-            return new UserHandler();
+            if (method.equals("POST")) {
+                return new CreateUserHandler();
+            } else if (method.equals("GET")) {
+                return new GetUserHandler();
+            }
         } else if (path.startsWith("/api/transfer")) {
-            return new TransferHandler();
+            if (method.equals("POST")) {
+                return new TransferHandler();
+            }
         } else if (path.equals("/")) {
             return new HomeHandler();
-        } else {
-            return new NotFoundHandler();
         }
+        
+        // If no handler matched, return NotFoundHandler
+        return new NotFoundHandler();
     }
 }

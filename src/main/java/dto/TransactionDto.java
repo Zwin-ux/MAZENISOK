@@ -1,22 +1,22 @@
 package dto;
 
-import java.time.Instant;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class TransactionDto extends BaseDto {
-
     private String userId;
-    private String toId;
-    private Double amount;
-    private TransactionType transactionType;
-    private Long timestamp;
+    private String toUserId;
+    private BigDecimal amount;
+    private LocalDateTime timestamp;
+    private TransactionType type;
 
-    public TransactionDto() {
-        timestamp = Instant.now().toEpochMilli();
-    }
-
-    public TransactionDto(String uniqueId) {
+    public TransactionDto(String uniqueId, String userId, String toUserId, BigDecimal amount, TransactionType type) {
         super(uniqueId);
-        timestamp = Instant.now().toEpochMilli();
+        this.userId = userId;
+        this.toUserId = toUserId;
+        this.amount = amount;
+        this.timestamp = LocalDateTime.now();
+        this.type = type;
     }
 
     public String getUserId() {
@@ -27,35 +27,47 @@ public class TransactionDto extends BaseDto {
         this.userId = userId;
     }
 
-    public String getToId() {
-        return toId;
+    public String getToUserId() {
+        return toUserId;
     }
 
-    public void setToId(String toId) {
-        this.toId = toId;
+    public void setToUserId(String toUserId) {
+        this.toUserId = toUserId;
     }
 
-    public Double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
-    public Long getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Long timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
-    public TransactionType getTransactionType() {
-        return transactionType;
+    public TransactionType getType() {
+        return type;
     }
 
-    public void setTransactionType(TransactionType transactionType) {
-        this.transactionType = transactionType;
+    public void setType(TransactionType type) {
+        this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "TransactionDto{" +
+                "uniqueId='" + getUniqueId() + '\'' +
+                ", userId='" + userId + '\'' +
+                ", toUserId='" + toUserId + '\'' +
+                ", amount=" + amount +
+                ", timestamp=" + timestamp +
+                ", type=" + type +
+                '}';
     }
 }

@@ -1,7 +1,6 @@
 package dto;
 
 public abstract class BaseDto {
-
     private String uniqueId;
 
     public BaseDto(String uniqueId) {

@@ -1,8 +1,10 @@
 package dao;
 
 import dto.TransactionDto;
+import dto.TransactionType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import java.math.BigDecimal;
 
 public class DaoTestStore {
 
@@ -11,12 +13,13 @@ public class DaoTestStore {
         TransactionDao.reset();
         TransactionDao transactionDao = TransactionDao.getInstance();
         String id = String.valueOf(Math.random());
-        TransactionDto transactionDto = new TransactionDto(id);
+        String userId = "testUser";
+        BigDecimal amount = new BigDecimal("100.00");
+        TransactionDto transactionDto = new TransactionDto(id, userId, null, amount, TransactionType.Deposit);
         transactionDao.put(transactionDto);
-        // id's that do not exist should be empty
-        Assert.assertNull(transactionDao.get(String.valueOf(Math.random())));
-        // ids that do exist should return the object
-        Assert.assertEquals(transactionDao.get(id), transactionDto);
-        Assert.assertNull(transactionDao.get(String.valueOf(Math.random())));
+        
+        Assert.assertTrue(transactionDao.get(String.valueOf(Math.random())).isEmpty());
+        Assert.assertEquals(transactionDao.get(id).orElse(null), transactionDto);
+        Assert.assertTrue(transactionDao.get(String.valueOf(Math.random())).isEmpty());
     }
 }

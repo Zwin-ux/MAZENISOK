@@ -12,6 +12,8 @@ import response.RestApiAppResponse;
 import server.Server;
 import testutils.TestUtils;
 
+import java.math.BigDecimal;
+
 public class InvalidFundsTransferTest {
     private static final Gson gson = new Gson();
 
@@ -21,7 +23,8 @@ public class InvalidFundsTransferTest {
         UserDto user1 = TestUtils.createUser();
         UserDto user2 = TestUtils.createUser();
 
-        TransferRequestDto requestDto = new TransferRequestDto(Math.random() * 100, user1.getUniqueId(), user2.getUniqueId());
+        BigDecimal amount = BigDecimal.valueOf(Math.random() * 100);
+        TransferRequestDto requestDto = new TransferRequestDto(amount, user1.getUniqueId(), user2.getUniqueId());
         String test1 = "GET /transfer HTTP/1.1\n"
                 + "Host: test\n"
                 + "Connection: Keep-Alive\n"
