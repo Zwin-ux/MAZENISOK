@@ -8,10 +8,13 @@ import dto.TransactionType;
 import response.CustomHttpResponse;
 import response.RestApiAppResponse;
 import server.Server;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
 
-public class GetTransactionsHte static final Gson gson = new Gson();
+public class GetTransactionsHte {
+    private static final Gson gson = new Gson();
 
     @Test(singleThreaded = true)
     public void getTransactionsTest2() {
