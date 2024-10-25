@@ -32,17 +32,20 @@ public class TransferHandler implements BaseHandler {
         UserDto fromUser = userDao.get(transferRequest.fromId).orElse(null);
         UserDto toUser = userDao.get(transferRequest.toId).orElse(null);
 
-        if (fromUser == null || toUser == null) {
-            return new ResponseBuilder().setStatus(400).setBody("Invalid user ID(s)");
+        if (fromUser == null) {
+            return new ResponseBuilder().setStatus(400).setBody(gson.toJson(new RestApiAppResponse<>(false, "Invalid from user.", null)));
+        }
+        if (toUser == null) {
+            return new ResponseBuilder().setStatus(400).setBody(gson.toJson(new RestApiAppResponse<>(false, "Invalid user to transfer.", null)));
         }
 
         BigDecimal amount = transferRequest.amount;
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
-            return new ResponseBuilder().setStatus(400).setBody("Invalid transfer amount");
+            return new ResponseBuilder().setStatus(400).setBody(gson.toJson(new RestApiAppResponse<>(false, "Invalid transfer amount", null)));
         }
 
         if (fromUser.getBalance().compareTo(amount) < 0) {
-            return new ResponseBuilder().setStatus(400).setBody("Insufficient funds");
+            return new ResponseBuilder().setStatus(400).setBody(gson.toJson(new RestApiAppResponse<>(false, "Not enough funds.", null)));
         }
 
         // Perform the transfer

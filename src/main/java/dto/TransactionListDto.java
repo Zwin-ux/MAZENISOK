@@ -2,7 +2,7 @@ package dto;
 
 import java.util.List;
 
-public class TransactionListDto extends BaseDto {
+public class TransactionListDto {
     private List<TransactionDto> transactions;
 
     public TransactionListDto(List<TransactionDto> transactions) {

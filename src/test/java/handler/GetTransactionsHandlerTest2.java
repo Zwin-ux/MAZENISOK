@@ -5,17 +5,13 @@ import com.google.gson.reflect.TypeToken;
 import dao.TransactionDao;
 import dto.TransactionDto;
 import dto.TransactionType;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 import response.CustomHttpResponse;
 import response.RestApiAppResponse;
 import server.Server;
 
 import java.math.BigDecimal;
-import java.util.List;
 
-public class GetTransactionsHandlerTest2 {
-    private static final Gson gson = new Gson();
+public class GetTransactionsHte static final Gson gson = new Gson();
 
     @Test(singleThreaded = true)
     public void getTransactionsTest2() {
@@ -37,8 +33,8 @@ public class GetTransactionsHandlerTest2 {
                 + "Connection: Keep-Alive\n"
                 + "\n";
         CustomHttpResponse response = Server.processRequest(test1);
-        RestApiAppResponse<List<TransactionDto>> messages = gson.fromJson(response.body,
-                new TypeToken<RestApiAppResponse<List<TransactionDto>>>() {}.getType());
-        Assert.assertEquals(messages.data.size(), 0);
+        RestApiAppResponse<dto.TransactionListDto> messages = gson.fromJson(response.body,
+                new TypeToken<RestApiAppResponse<dto.TransactionListDto>>() {}.getType());
+        Assert.assertEquals(messages.data.getTransactions().size(), 0);
     }
 }

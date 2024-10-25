@@ -1,7 +1,8 @@
 package server;
 
-import handler.BaseHandler;
-import handler.HandlerFactory;
+import handler.CreateDepositHandler;
+import handler.GetTransactionsHandler;
+import handler.CreateUserHandler;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.net.Socket;
 import request.CustomParser;
 import request.ParsedRequest;
 import response.CustomHttpResponse;
+import response.ResponseBuilder;
 
 public class Server {
 
@@ -64,8 +66,22 @@ public class Server {
     // Response is a raw http response string
     public static CustomHttpResponse processRequest(String requestString) {
         ParsedRequest request = CustomParser.parse(requestString);
-        BaseHandler handler = HandlerFactory.getHandler(request);
-        CustomHttpResponse response = handler.handleRequest(request).build();
+        ResponseBuilder responseBuilder;
+
+        String path = request.getPath();
+        String method = request.getMethod();
+
+        if (method.equals("POST") && path.equals("/api/users")) {
+            responseBuilder = new CreateUserHandler().handleRequest(request);
+        } else if (method.equals("POST") && path.equals("/api/transactions/deposit")) {
+            responseBuilder = new CreateDepositHandler().handleRequest(request);
+        } else if (method.equals("GET") && path.equals("/api/transactions")) {
+            responseBuilder = new GetTransactionsHandler().handleRequest(request);
+        } else {
+            responseBuilder = new ResponseBuilder().setStatus(404).setBody("Not Found");
+        }
+
+        CustomHttpResponse response = responseBuilder.build();
         if (response.body != null) {
             response.headers.put("Content-type", "application/json");
         }

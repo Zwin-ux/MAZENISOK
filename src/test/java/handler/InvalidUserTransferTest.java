@@ -24,9 +24,10 @@ public class InvalidUserTransferTest {
             TestUtils.makeRandomString(),
             TestUtils.makeRandomString()
         );
-        String test1 = "GET /transfer HTTP/1.1\n"
+        String test1 = "POST /api/transfer HTTP/1.1\n"
                 + "Host: test\n"
                 + "Connection: Keep-Alive\n"
+                + "Content-Type: application/json\n"
                 + "\n"
                 + gson.toJson(requestDto);
         CustomHttpResponse response = Server.processRequest(test1);

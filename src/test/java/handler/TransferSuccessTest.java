@@ -39,7 +39,7 @@ public class TransferSuccessTest {
                 + gson.toJson(requestDto);
         CustomHttpResponse response = Server.processRequest(test1);
         Assert.assertEquals(response.status, "200 OK");
-        RestApiAppResponse<?> userRes = GsonTool.GSON.fromJson(response.body,
+        RestApiAppResponse<?> userRes = gson.fromJson(response.body,
                 new TypeToken<RestApiAppResponse<?>>() {
                 }.getType());
         Assert.assertEquals(userRes.message, null);
