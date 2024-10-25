@@ -1,0 +1,204 @@
+{
+    "tests": [
+        {
+            "name": "NotFoundTest",
+            "setup": "",
+            "run": "mvn -Dtest=NotFoundTest test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "CustomHttpResponseTest",
+            "setup": "",
+            "run": "mvn -Dtest=CustomHttpResponseTest test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "VariableQueryArgsTest",
+            "setup": "",
+            "run": "mvn -Dtest=VariableQueryArgsTest test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "QueryParamsRequest",
+            "setup": "",
+            "run": "mvn -Dtest=QueryParamsRequest test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "BasicRequestTest",
+            "setup": "",
+            "run": "mvn -Dtest=BasicRequestTest test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "BasicPostBody2",
+            "setup": "",
+            "run": "mvn -Dtest=BasicPostBody2 test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "BasicPostBody",
+            "setup": "",
+            "run": "mvn -Dtest=BasicPostBody test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "BasicParamsTest2",
+            "setup": "",
+            "run": "mvn -Dtest=BasicParamsTest2 test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "TransferSuccessTest",
+            "setup": "",
+            "run": "mvn -Dtest=TransferSuccessTest test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "TransferHandlerTest",
+            "setup": "",
+            "run": "mvn -Dtest=TransferHandlerTest test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "InvalidUserTransferTest2",
+            "setup": "",
+            "run": "mvn -Dtest=InvalidUserTransferTest2 test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "InvalidUserTransferTest",
+            "setup": "",
+            "run": "mvn -Dtest=InvalidUserTransferTest test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "InvalidFundsTransferTest",
+            "setup": "",
+            "run": "mvn -Dtest=InvalidFundsTransferTest test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "GetTransactionsHandlerTest2",
+            "setup": "",
+            "run": "mvn -Dtest=GetTransactionsHandlerTest2 test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "GetTransactionsHandlerTest",
+            "setup": "",
+            "run": "mvn -Dtest=GetTransactionsHandlerTest test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "CreateUserHandlerTest",
+            "setup": "",
+            "run": "mvn -Dtest=CreateUserHandlerTest test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "CreateDepositHandlerTest",
+            "setup": "",
+            "run": "mvn -Dtest=CreateDepositHandlerTest test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "DaoTestStore",
+            "setup": "",
+            "run": "mvn -Dtest=DaoTestStore test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "DaoTestSingleton",
+            "setup": "",
+            "run": "mvn -Dtest=DaoTestSingleton test",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        },
+        {
+            "name": "Checkstyle",
+            "setup": "",
+            "run": "mvn checkstyle:check",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 5
+        }
+    ]
+}
